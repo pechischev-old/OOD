@@ -149,6 +149,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DanceBehavior.h" />
+    <ClInclude Include="FlyBehavior.h" />
+    <ClInclude Include="QuackBehavior.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

@@ -3,99 +3,12 @@
 #include <cassert>
 #include <vector>
 
+#include "FlyBehavior.h"
+#include "DanceBehavior.h"
+#include "QuackBehavior.h"
+
 using namespace std;
 
-struct IDanceBehavior
-{
-	virtual ~IDanceBehavior() {};
-	virtual void Dance() = 0;
-};
-
-class DanceWalts : public IDanceBehavior
-{
-public:
-	void Dance() override
-	{
-		cout << "I'm dancing walts" << endl;
-	}
-};
-
-class DanceMinuet : public IDanceBehavior
-{
-public:
-	void Dance() override
-	{
-		cout << "I'm dancing minuet" << endl;
-	}
-};
-
-class NotDance : public IDanceBehavior
-{
-public:
-	void Dance() override
-	{
-		cout << "I'm not dancing" << endl;
-	}
-};
-
-struct IFlyBehavior
-{
-	virtual ~IFlyBehavior() {};
-	virtual void Fly() = 0;
-	void OutputId() {
-		id++;
-		cout << id << endl;
-	}
-private:
-	int countDepartures;
-	int id;
-};
-
-class FlyWithWings : public IFlyBehavior
-{
-public:
-	void Fly() override
-	{
-		cout << "I'm flying with wings!!" << endl;
-	}
-
-};
-
-class FlyNoWay : public IFlyBehavior
-{
-public:
-	void Fly() override {}
-};
-
-struct IQuackBehavior
-{
-	virtual ~IQuackBehavior() {};
-	virtual void Quack() = 0;
-};
-
-class QuackBehavior : public IQuackBehavior
-{
-public:
-	void Quack() override
-	{
-		cout << "Quack Quack!!!" << endl;
-	}
-};
-
-class SqueakBehavior : public IQuackBehavior
-{
-public:
-	void Quack() override
-	{
-		cout << "Squeek!!!" << endl;
-	}
-};
-
-class MuteQuackBehavior : public IQuackBehavior
-{
-public:
-	void Quack() override {}
-};
 
 class Duck
 {
@@ -103,9 +16,11 @@ public:
 	Duck(unique_ptr<IFlyBehavior> && flyBehavior, unique_ptr<IQuackBehavior> && quackBehavior, unique_ptr<IDanceBehavior> && danceBehavior)
 		: m_quackBehavior(move(quackBehavior))
 		, m_danceBehavior(move(danceBehavior))
+		, m_flyBehavior(move(flyBehavior))
 	{
 		assert(m_quackBehavior);
-		SetFlyBehavior(move(flyBehavior));
+		assert(m_danceBehavior);
+		assert(m_flyBehavior);
 	}
 	void Quack() const
 	{
@@ -203,6 +118,7 @@ public:
 void DrawDuck(Duck const& duck)
 {
 	duck.Display();
+	cout << "----------" << endl;
 }
 
 void PlayWithDuck(Duck & duck)
@@ -211,6 +127,13 @@ void PlayWithDuck(Duck & duck)
 	duck.Dance();
 	duck.Fly();
 	DrawDuck(duck);
+}
+
+void FlyFly(Duck & duck)
+{
+	duck.Fly();
+	duck.Fly();
+	duck.Fly();
 }
 
 
@@ -223,9 +146,12 @@ void main()
 	RubberDuck rubberDuck;
 	PlayWithDuck(rubberDuck);
 	DeckoyDuck deckoyDuck;
+	
 	PlayWithDuck(deckoyDuck);
 	ModelDuck modelDuck;
 	PlayWithDuck(modelDuck);
+
 	modelDuck.SetFlyBehavior(make_unique<FlyWithWings>());
+	FlyFly(modelDuck);
 	PlayWithDuck(modelDuck);
 }
