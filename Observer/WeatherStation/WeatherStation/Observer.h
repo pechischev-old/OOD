@@ -2,6 +2,7 @@
 
 #include <set>
 #include <functional>
+#include <map>
 
 /*
 Шаблонный интерфейс IObserver. Его должен реализовывать класс,
@@ -26,9 +27,9 @@ class IObservable
 {
 public:
 	virtual ~IObservable() = default;
-	virtual void RegisterObserver(IObserver<T> & observer) = 0;
+	virtual void RegisterObserver(IObserver<T> & observer, int priority) = 0;
 	virtual void NotifyObservers() = 0;
-	virtual void RemoveObserver(IObserver<T> & observer) = 0;
+	virtual void RemoveObserver(IObserver<T> * observer) = 0;
 };
 
 // Реализация интерфейса IObservable
@@ -38,26 +39,33 @@ class CObservable : public IObservable<T>
 public:
 	typedef IObserver<T> ObserverType;
 
-	void RegisterObserver(ObserverType & observer) override
+	void RegisterObserver(ObserverType & observer, int priority) override
 	{
-		m_observers.insert(&observer);
+		m_observers.emplace(priority, &observer);
 	}
 
 	void NotifyObservers() override
 	{
 		T data = GetChangedData();
-		for (auto observer : m_observers)
+		for (auto it = m_observers.rbegin(); it != m_observers.rend(); ++it)
 		{
-			if (observer)
+			if (it->second)
 			{
-				observer->Update(data);
+				it->second->Update(data);
 			}
 		}
 	}
 
-	void RemoveObserver(ObserverType & observer) override
+	void RemoveObserver(ObserverType * observer) override
 	{
-		m_observers.erase(&observer);
+		for (auto it = m_observers.begin(); it != m_observers.end(); ++it)
+		{
+			if (it->second == observer)
+			{
+				m_observers.erase(it);
+				break;
+			}
+		}
 	}
 
 protected:
@@ -66,5 +74,6 @@ protected:
 	virtual T GetChangedData()const = 0;
 
 private:
-	std::set<ObserverType *> m_observers;
+	//std::set<ObserverType *> m_observers;
+	std::map<int, ObserverType *> m_observers;
 };
