@@ -46,9 +46,12 @@ public:
 	void NotifyObservers() override
 	{
 		T data = GetChangedData();
-		for (auto & observer : m_observers)
+		for (auto observer : m_observers)
 		{
-			observer->Update(data);
+			if (observer)
+			{
+				observer->Update(data);
+			}
 		}
 	}
 
