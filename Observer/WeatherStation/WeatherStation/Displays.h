@@ -17,6 +17,7 @@ private:
 	*/
 	void Update(SWeatherInfo const& data) override
 	{
+		std::cout << "Current Station " << data.nameStation << std::endl;
 		std::cout << "Current Temp " << data.temperature << std::endl;
 		std::cout << "Current Hum " << data.humidity << std::endl;
 		std::cout << "Current Pressure " << data.pressure << std::endl;
@@ -63,6 +64,8 @@ private:
 	*/
 	void Update(SWeatherInfo const& data) override
 	{
+		std::cout << "Current Station " << data.nameStation << std::endl;
+
 		CalculateStatData(tempData, data.temperature);
 		PrintStatData(tempData, "Temp");
 

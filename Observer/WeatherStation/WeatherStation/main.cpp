@@ -5,21 +5,28 @@
 
 int main()
 {
-	CWeatherData wd;
+	CWeatherData in("Room");
+	CWeatherData out("Outside");
 
 	CDisplay display;
-	wd.RegisterObserver(display, 1);
+	in.RegisterObserver(display, 1);
+	out.RegisterObserver(display, 5);
 
 	CStatsDisplay statsDisplay;
-	wd.RegisterObserver(statsDisplay, 2);
+	in.RegisterObserver(statsDisplay, 2);
+	out.RegisterObserver(statsDisplay, 2);
 
-	wd.SetMeasurements(3, 0.7, 760);
-	wd.SetMeasurements(4, 0.8, 761);
+	in.SetMeasurements(3, 0.7, 760);
+	in.SetMeasurements(4, 0.8, 761);
 
-	wd.RemoveObserver(&statsDisplay);
+	out.SetMeasurements(5, 1.0, 758);	
+	out.SetMeasurements(2, 0.9, 757);
 
-	wd.SetMeasurements(10, 0.8, 761);
-	wd.SetMeasurements(-10, 0.8, 761);
+	in.RemoveObserver(&statsDisplay);
+	out.RemoveObserver(&statsDisplay);
+
+	in.SetMeasurements(10, 0.8, 761);
+	in.SetMeasurements(-10, 0.8, 761);
     return 0;
 }
 
