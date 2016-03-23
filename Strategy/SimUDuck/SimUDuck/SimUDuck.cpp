@@ -36,7 +36,7 @@ public:
 	}
 	virtual void Dance()
 	{
-		cout << "I'm Dancing" << endl;
+		m_danceBehavior->Dance();
 	}
 	void SetFlyBehavior(unique_ptr<IFlyBehavior> && flyBehavior)
 	{
