@@ -108,7 +108,7 @@ int main()
 {
 	{
 		// Наливаем чашечку латте
-		auto latte = make_unique<CLatte>();
+		auto latte = make_unique<CLatte>(PortionType::Twin);
 		// добавляем корицы
 		auto cinnamon = make_unique<CCinnamon>(move(latte));
 		// добавляем пару долек лимона
@@ -128,7 +128,7 @@ int main()
 				make_unique<CIceCubes>(				// | под нею - кубики льда
 					make_unique<CLemon>(			// | | еще ниже лимон
 						make_unique<CCinnamon>(		// | | | слоем ниже - корица
-							make_unique<CLatte>()),	// | | |   в самом сердце - Латте
+							make_unique<CLatte>(PortionType::Standard)),	// | | |   в самом сердце - Латте
 						2),							// | | 2 дольки лимона
 					2, IceCubeType::Dry),			// | 2 кубика сухого льда
 				2);									// 2 грамма шоколадной крошки
@@ -144,7 +144,7 @@ int main()
 		// iceCubes - функция, добавляющая "3 кусочка льда" к любому напитку
 		auto iceCubes3 = MakeCondiment<CIceCubes>(3, IceCubeType::Water);
 
-		auto tea = make_unique<CTea>();
+		auto tea = make_unique<CTea>(TeaType::Green);
 
 		// декорируем чай двумя дольками лимона и тремя кусочками льда
 		auto lemonIceTea = iceCubes3(lemon2(move(tea)));
@@ -158,7 +158,7 @@ int main()
 		*/
 
 		auto oneMoreLemonIceTea =
-			make_unique<CTea>()	// Берем чай
+			make_unique<CTea>(TeaType::Black)	// Берем чай
 			<< MakeCondiment<CLemon>(2)	// добавляем пару долек лимона
 			<< MakeCondiment<CIceCubes>(3, IceCubeType::Water); // и 3 кубика льда
 																/*
@@ -174,7 +174,7 @@ int main()
 	// обеспечиваемого операторами << и функцией MakeCondiment
 	{
 		auto beverage =
-			make_unique<CLatte>()							// Наливаем чашечку латте,
+			make_unique<CLatte>(PortionType::Standard)					// Наливаем чашечку латте,
 			<< MakeCondiment<CCinnamon>()					// оборачиваем корицей,
 			<< MakeCondiment<CLemon>(2)						// добавляем пару долек лимона
 			<< MakeCondiment<CIceCubes>(2, IceCubeType::Dry)// брасаем пару кубиков сухого льда
@@ -186,7 +186,7 @@ int main()
 
 	{
 		auto beverage =
-			make_unique<CMilkshake>()					// Наливаем молочный коктейль
+			make_unique<CMilkshake>(ServingSizeMilkshakes::Medium)					// Наливаем молочный коктейль
 			<< MakeCondiment<CSyrup>(SyrupType::Maple)	// заливаем кленовым сиропом
 			<< MakeCondiment<CCoconutFlakes>(8);		// посыпаем кокосовой стружкой
 
@@ -195,7 +195,7 @@ int main()
 	}
 	{
 		auto beverage =
-			make_unique<CMilkshake>()					// Наливаем молочный коктейль
+			make_unique<CMilkshake>(ServingSizeMilkshakes::Small)					// Наливаем молочный коктейль
 			<< MakeCondiment<CChocolate>(6)				// добавляем шоколадные дольки
 			<< MakeCondiment<CLiqueur>(LiqueurType::Walnut);		// заливаем ореховый ликер
 

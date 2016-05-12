@@ -144,7 +144,10 @@ public:
 			return 60;
 		case ServingSizeMilkshakes::Small:
 			return 50;
+		default:
+			return 0;
 		}
+		
 	}
 private:
 	ServingSizeMilkshakes m_servingSize;
