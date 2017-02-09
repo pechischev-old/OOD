@@ -1,11 +1,9 @@
-#include <iostream>
-#include <memory>
-#include <cassert>
-#include <vector>
+// SimUDuckFunc.cpp: определяет точку входа для консольного приложения.
+//
 
-#include "FlyBehavior.h"
-#include "DanceBehavior.h"
-#include "QuackBehavior.h"
+#include "stdafx.h"
+
+#include "StrategyFunc.h"
 
 using namespace std;
 
@@ -13,49 +11,45 @@ using namespace std;
 class Duck
 {
 public:
-	Duck(unique_ptr<IFlyBehavior> && flyBehavior, unique_ptr<IQuackBehavior> && quackBehavior, unique_ptr<IDanceBehavior> && danceBehavior)
-		: m_quackBehavior(move(quackBehavior))
-		, m_danceBehavior(move(danceBehavior))
-		, m_flyBehavior(move(flyBehavior))
+	Duck(Function const & fly, Function const & quack, Function const & dance)
+		: m_quackBehavior(quack)
+		, m_danceBehavior(dance)
+		, m_flyBehavior(fly)
 	{
-		assert(m_quackBehavior);
-		assert(m_danceBehavior);
-		assert(m_flyBehavior);
 	}
 	void Quack() const
 	{
-		m_quackBehavior->Quack();
+		m_quackBehavior();
 	}
-	void Swim() const
+	void Swim()
 	{
 		cout << "I'm swimming" << endl;
 	}
-	void Fly() const
+	void Fly()
 	{
-		m_flyBehavior->Fly();
+		m_flyBehavior();
 	}
-	void Dance() const
+	void Dance()
 	{
-		m_danceBehavior->Dance();
+		m_danceBehavior();
 	}
-	void SetFlyBehavior(unique_ptr<IFlyBehavior> && flyBehavior)
+	void SetFlyBehavior(Function const & flyBehavior)
 	{
-		assert(flyBehavior);
-		m_flyBehavior = move(flyBehavior);
+		m_flyBehavior = flyBehavior;
 	}
 	virtual void Display() const = 0;
 	virtual ~Duck() {};
 private:
-	unique_ptr<IFlyBehavior> m_flyBehavior;
-	unique_ptr<IQuackBehavior> m_quackBehavior;
-	unique_ptr<IDanceBehavior> m_danceBehavior;
+	Function m_flyBehavior;
+	Function m_quackBehavior;
+	Function m_danceBehavior;
 };
 
 class MallardDuck : public Duck
 {
 public:
 	MallardDuck()
-		: Duck(make_unique<FlyWithWings>(), make_unique<QuackBehavior>(), make_unique<DanceWalts>())
+		: Duck(FlyBehavior::FlyWithWings, QuackBehavior::Quack, DanceBehavior::DanceWalts)
 	{
 	}
 
@@ -69,7 +63,7 @@ class RedheadDuck : public Duck
 {
 public:
 	RedheadDuck()
-		: Duck(make_unique<FlyWithWings>(), make_unique<QuackBehavior>(), make_unique<DanceMinuet>())
+		: Duck(FlyBehavior::FlyWithWings, QuackBehavior::Quack, DanceBehavior::DanceMinuet)
 	{
 	}
 	void Display() const override
@@ -81,7 +75,7 @@ class DeckoyDuck : public Duck
 {
 public:
 	DeckoyDuck()
-		: Duck(make_unique<FlyNoWay>(), make_unique<MuteQuackBehavior>(), make_unique<NotDance>())
+		: Duck(FlyBehavior::FlyNoWay, QuackBehavior::MuteQuack, DanceBehavior::NotDance)
 	{
 	}
 	void Display() const override
@@ -93,7 +87,7 @@ class RubberDuck : public Duck
 {
 public:
 	RubberDuck()
-		: Duck(make_unique<FlyNoWay>(), make_unique<QuackBehavior>(), make_unique<NotDance>())
+		: Duck(FlyBehavior::FlyNoWay, QuackBehavior::Quack, DanceBehavior::NotDance)
 	{
 	}
 	void Display() const override
@@ -106,7 +100,7 @@ class ModelDuck : public Duck
 {
 public:
 	ModelDuck()
-		: Duck(make_unique<FlyNoWay>(), make_unique<QuackBehavior>(), make_unique<NotDance>())
+		: Duck(FlyBehavior::FlyNoWay, QuackBehavior::Quack, DanceBehavior::NotDance)
 	{
 	}
 	void Display() const override
@@ -146,12 +140,11 @@ void main()
 	RubberDuck rubberDuck;
 	PlayWithDuck(rubberDuck);
 	DeckoyDuck deckoyDuck;
-	
+
 	PlayWithDuck(deckoyDuck);
 	ModelDuck modelDuck;
 	PlayWithDuck(modelDuck);
 
-	modelDuck.SetFlyBehavior(make_unique<FlyWithWings>());
 	FlyFly(modelDuck);
 	PlayWithDuck(modelDuck);
 }

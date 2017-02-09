@@ -1,22 +1,13 @@
-#include <iostream>
-#include <memory>
-#include <cassert>
-#include <vector>
-
-#include "FlyBehavior.h"
-#include "DanceBehavior.h"
-#include "QuackBehavior.h"
-
-using namespace std;
-
+#pragma once
+#include "stdafx.h"
 
 class Duck
 {
 public:
-	Duck(unique_ptr<IFlyBehavior> && flyBehavior, unique_ptr<IQuackBehavior> && quackBehavior, unique_ptr<IDanceBehavior> && danceBehavior)
-		: m_quackBehavior(move(quackBehavior))
-		, m_danceBehavior(move(danceBehavior))
-		, m_flyBehavior(move(flyBehavior))
+	Duck(std::unique_ptr<IFlyBehavior> && flyBehavior, std::unique_ptr<IQuackBehavior> && quackBehavior, std::unique_ptr<IDanceBehavior> && danceBehavior)
+		: m_quackBehavior(std::move(quackBehavior))
+		, m_danceBehavior(std::move(danceBehavior))
+		, m_flyBehavior(std::move(flyBehavior))
 	{
 		assert(m_quackBehavior);
 		assert(m_danceBehavior);
@@ -26,42 +17,42 @@ public:
 	{
 		m_quackBehavior->Quack();
 	}
-	void Swim() const
+	void Swim()
 	{
-		cout << "I'm swimming" << endl;
+		std::cout << "I'm swimming" << std::endl;
 	}
-	void Fly() const
+	void Fly()
 	{
 		m_flyBehavior->Fly();
 	}
-	void Dance() const
+	virtual void Dance()
 	{
 		m_danceBehavior->Dance();
 	}
-	void SetFlyBehavior(unique_ptr<IFlyBehavior> && flyBehavior)
+	void SetFlyBehavior(std::unique_ptr<IFlyBehavior> && flyBehavior)
 	{
 		assert(flyBehavior);
-		m_flyBehavior = move(flyBehavior);
+		m_flyBehavior = std::move(flyBehavior);
 	}
 	virtual void Display() const = 0;
 	virtual ~Duck() {};
 private:
-	unique_ptr<IFlyBehavior> m_flyBehavior;
-	unique_ptr<IQuackBehavior> m_quackBehavior;
-	unique_ptr<IDanceBehavior> m_danceBehavior;
+	std::unique_ptr<IFlyBehavior> m_flyBehavior;
+	std::unique_ptr<IQuackBehavior> m_quackBehavior;
+	std::unique_ptr<IDanceBehavior> m_danceBehavior;
 };
 
 class MallardDuck : public Duck
 {
 public:
 	MallardDuck()
-		: Duck(make_unique<FlyWithWings>(), make_unique<QuackBehavior>(), make_unique<DanceWalts>())
+		: Duck(std::make_unique<FlyWithWings>(), std::make_unique<QuackBehavior>(), std::make_unique<DanceWalts>())
 	{
 	}
 
 	void Display() const override
 	{
-		cout << "I'm mallard duck" << endl;
+		std::cout << "I'm mallard duck" << std::endl;
 	}
 };
 
@@ -69,19 +60,19 @@ class RedheadDuck : public Duck
 {
 public:
 	RedheadDuck()
-		: Duck(make_unique<FlyWithWings>(), make_unique<QuackBehavior>(), make_unique<DanceMinuet>())
+		: Duck(std::make_unique<FlyWithWings>(), std::make_unique<QuackBehavior>(), std::make_unique<DanceMinuet>())
 	{
 	}
 	void Display() const override
 	{
-		cout << "I'm redhead duck" << endl;
+		std::cout << "I'm redhead duck" << std::endl;
 	}
 };
 class DeckoyDuck : public Duck
 {
 public:
 	DeckoyDuck()
-		: Duck(make_unique<FlyNoWay>(), make_unique<MuteQuackBehavior>(), make_unique<NotDance>())
+		: Duck(std::make_unique<FlyNoWay>(), std::make_unique<MuteQuackBehavior>(), std::make_unique<NotDance>())
 	{
 	}
 	void Display() const override
@@ -146,7 +137,7 @@ void main()
 	RubberDuck rubberDuck;
 	PlayWithDuck(rubberDuck);
 	DeckoyDuck deckoyDuck;
-	
+
 	PlayWithDuck(deckoyDuck);
 	ModelDuck modelDuck;
 	PlayWithDuck(modelDuck);
