@@ -184,17 +184,20 @@ class CCream : public CCondimentDecorator
 public: 
 	CCream(IBeveragePtr && beverage, unsigned mass)
 		: CCondimentDecorator(move(beverage))
+		, m_mass(mass)
 	{}
 
 protected:
 	double GetCondimentCost()const override
 	{
-		return 25;
+		return 25 * m_mass;
 	}
 	std::string GetCondimentDescription()const override
 	{
 		return "Cream ";
 	}
+private:
+	unsigned m_mass;
 };
 
 // Тип ликера

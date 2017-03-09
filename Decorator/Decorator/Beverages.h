@@ -31,17 +31,14 @@ enum class PortionType
 class CCoffee : public CBeverage
 {
 public:
-	CCoffee(const std::string& description = "Coffee", PortionType type = PortionType::Standard)
+	CCoffee(const std::string& description = "Coffee")
 		: CBeverage(description)
-		, m_type(type)
 	{}
 
 	double GetCost() const override
 	{
 		return 60;
 	}
-private:
-	PortionType m_type;
 };
 
 // Капуччино
@@ -87,12 +84,25 @@ enum class TeaType
 	Leaf
 };
 
-static const std::map<TeaType, std::string> TEA_TYPE
+static std::string const & GetTeaDescription(TeaType type)
 {
-	{ TeaType::Green, "Green"},
-	{ TeaType::Black, "Black" },
-	{ TeaType::Indian, "Indian" },
-	{ TeaType::Leaf, "Leaf" }
+	std::string description;
+	switch (type)
+	{
+	case TeaType::Green:
+		description = "Green";
+		break;
+	case TeaType::Black:
+		description = "Black";
+		break;
+	case TeaType::Indian:
+		description = "Indian";
+		break;
+	case TeaType::Leaf:
+		description = "Leaf";
+		break;
+	}
+	return description;
 };
 
 // Чай
@@ -100,7 +110,7 @@ class CTea : public CBeverage
 {
 public:
 	CTea(TeaType type)
-		:CBeverage(TEA_TYPE.find(type)->second + " Tea")
+		:CBeverage(GetTeaDescription(type) + " Tea")
 		, m_type(type)
 	{}
 
@@ -120,17 +130,29 @@ enum class ServingSizeMilkshakes
 	Big
 };
 
-static const std::map<ServingSizeMilkshakes, std::string> SERVING_SIZE
-	{ {ServingSizeMilkshakes::Small, "Small"},
-	{ ServingSizeMilkshakes::Medium, "Medium" },
-	{ ServingSizeMilkshakes::Big, "Big" } };
+static std::string const & GetMilkshakesDescription(ServingSizeMilkshakes type)
+{
+	std::string description;
+	switch (type)
+	{
+	case ServingSizeMilkshakes::Small:
+		description = "Small";
+		break;
+	case ServingSizeMilkshakes::Medium:
+		description = "Medium";
+		break;
+	case ServingSizeMilkshakes::Big:
+		description = "Big";
+		break;
+	}	return description;
+};
 
 // Молочный коктейль
 class CMilkshake : public CBeverage
 {
 public:
 	CMilkshake(ServingSizeMilkshakes servingSize)
-		:CBeverage(SERVING_SIZE.find(servingSize)->second + " Milkshake")
+		:CBeverage(GetMilkshakesDescription(servingSize) + " Milkshake")
 		, m_servingSize(servingSize)
 	{}
 
