@@ -8,13 +8,12 @@
 class CShape
 {
 public:
-	CShape();
+	CShape(Color color);
 	virtual ~CShape() = default;
 
 	virtual void Draw(ICanvas & canvas) = 0;
 
 	Color GetColor() const;
-	void SetColor(Color color);
 
 protected:
 	Color m_color;

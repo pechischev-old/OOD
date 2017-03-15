@@ -2,16 +2,12 @@
 
 
 
-CShape::CShape()
+CShape::CShape(Color color)
+	: m_color(color)
 {
 }
 
 Color CShape::GetColor() const
 {
 	return m_color;
-}
-
-void CShape::SetColor(Color color)
-{
-	m_color = color;
 }

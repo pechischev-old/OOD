@@ -1,21 +1,21 @@
 #pragma once
-#include <glm/vec2.hpp>
+#include <SFML/System/Vector2.hpp>
 #include "Shape.h"
 
 class CTriangle : public CShape
 {
 public:
-	CTriangle(glm::vec2 const & vertex1, glm::vec2 const & vertex2, glm::vec2 const & vertex3);
+	CTriangle(Color color, sf::Vector2f const & vertex1, sf::Vector2f const & vertex2, sf::Vector2f const & vertex3);
 	~CTriangle();
 
 	void Draw(ICanvas & canvas) override;
 
-	glm::vec2 GetVertex1() const;
-	glm::vec2 GetVertex2() const;
-	glm::vec2 GetVertex3() const;
+	sf::Vector2f GetVertex1() const;
+	sf::Vector2f GetVertex2() const;
+	sf::Vector2f GetVertex3() const;
 private:
-	glm::vec2 m_pointA;
-	glm::vec2 m_pointB;
-	glm::vec2 m_pointC;
+	sf::Vector2f m_pointA;
+	sf::Vector2f m_pointB;
+	sf::Vector2f m_pointC;
 };
 

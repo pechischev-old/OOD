@@ -1,23 +1,26 @@
 #pragma once
 #include <vector>
-#include <glm/vec2.hpp>
+#include <SFML/System/Vector2.hpp>
 #include "Shape.h"
 
 class CRegularPolygon : public CShape
 {
 public:
-	CRegularPolygon();
+	CRegularPolygon(Color color, sf::Vector2f const & center, float radius, unsigned vertexCount);
 	~CRegularPolygon();
 
 	void Draw(ICanvas & canvas) override;
 
 	unsigned GetVertexCount() const;
-	glm::vec2 GetCenter() const;
+	sf::Vector2f GetCenter() const;
 	float GetRadius() const;
+
+private:
+	sf::Vector2f GetCoordinatePoint(float angle, unsigned number) const;
 
 private:
 	unsigned m_vertexCount;
 	float m_radius;
-	glm::vec2 m_center;
+	sf::Vector2f m_center;
 };
 
