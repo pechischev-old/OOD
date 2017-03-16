@@ -81,7 +81,10 @@ std::unique_ptr<CShape> CShapeFactory::CreateShape(std::istream & description)
 
 std::unique_ptr<CShape> CShapeFactory::CreateRectangle(Color color, std::istream & description)
 {
-	double left, top, right, bottom;
+	double left;
+	double top;
+	double right;
+	double bottom;
 	if (description >> left >> top >> right >> bottom)
 	{
 		return std::make_unique<CRectangle>(color, Vec2(left, top), Vec2(right, bottom));
@@ -94,7 +97,12 @@ std::unique_ptr<CShape> CShapeFactory::CreateRectangle(Color color, std::istream
 
 std::unique_ptr<CShape> CShapeFactory::CreateTriangle(Color color, std::istream & description)
 {
-	double x1, x2, x3, y1, y2, y3;
+	double x1;
+	double x2;
+	double x3;
+	double y1;
+	double y2;
+	double y3;
 	if (description >> x1 >> y1 >> x2 >> y2 >> x3 >> y3)
 	{
 		return std::make_unique<CTriangle>(color, Vec2(x1, y1), Vec2(x2, y2), Vec2(x3, y3));
@@ -107,7 +115,10 @@ std::unique_ptr<CShape> CShapeFactory::CreateTriangle(Color color, std::istream 
 
 std::unique_ptr<CShape> CShapeFactory::CreateEllipse(Color color, std::istream & description)
 {
-	double x, y, width, height;
+	double x;
+	double y;
+	double width;
+	double height;
 	if (description >> x >> y >> width >> height) 
 	{ 
 		return std::make_unique<CEllipse>(color, Vec2(x, y), width, height);
@@ -120,7 +131,9 @@ std::unique_ptr<CShape> CShapeFactory::CreateEllipse(Color color, std::istream &
 
 std::unique_ptr<CShape> CShapeFactory::CreatePolygon(Color color, std::istream & description)
 {
-	double x, y, radius;
+	double x;
+	double y;
+	double radius;
 	unsigned vertexCount;
 	if (description >> x >> y >> radius >> vertexCount)
 	{
