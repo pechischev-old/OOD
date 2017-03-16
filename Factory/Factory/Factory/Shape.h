@@ -3,7 +3,10 @@
 #include <memory>
 #include "Colors.h"
 #include "ShapeTypes.h"
-#include "ICanvas.h"
+#include "Vec2.h"
+
+
+struct ICanvas;
 
 class CShape
 {

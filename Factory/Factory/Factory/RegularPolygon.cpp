@@ -1,8 +1,8 @@
 #include "RegularPolygon.h"
+#include "ICanvas.h"
 
 
-
-CRegularPolygon::CRegularPolygon(Color color, sf::Vector2f const & center, float radius, unsigned vertexCount)
+CRegularPolygon::CRegularPolygon(Color color, Vec2 const & center, double radius, unsigned vertexCount)
 	: CShape(color)
 	, m_center(center)
 	, m_radius(radius)
@@ -17,7 +17,7 @@ CRegularPolygon::~CRegularPolygon()
 
 void CRegularPolygon::Draw(ICanvas & canvas)
 {
-	float angle = 360.f / m_vertexCount;
+	double angle = 360.f / m_vertexCount;
 	auto predPoint = GetCoordinatePoint(angle, 0);
 
 	for (unsigned vertex = 1; vertex < m_vertexCount; ++vertex)
@@ -33,17 +33,17 @@ unsigned CRegularPolygon::GetVertexCount() const
 	return m_vertexCount;
 }
 
-sf::Vector2f CRegularPolygon::GetCenter() const
+Vec2 CRegularPolygon::GetCenter() const
 {
 	return m_center;
 }
 
-float CRegularPolygon::GetRadius() const
+double CRegularPolygon::GetRadius() const
 {
 	return m_radius;
 }
 
-sf::Vector2f CRegularPolygon::GetCoordinatePoint(float angle, unsigned number) const
+Vec2 CRegularPolygon::GetCoordinatePoint(double angle, unsigned number) const
 {
-	return sf::Vector2f(m_center.x + m_radius * cos(angle * number), m_center.y + m_radius * sin(angle * number));
+	return Vec2(m_center.x + m_radius * cos(angle * number), m_center.y + m_radius * sin(angle * number));
 }

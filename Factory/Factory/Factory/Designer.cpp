@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Designer.h"
+#include "PictureDraft.h"
 #include <exception>
 
 

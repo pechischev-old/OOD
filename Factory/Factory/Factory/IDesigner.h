@@ -1,10 +1,11 @@
 #pragma once
 #include <istream>
 #include <memory>
-#include "PictureDraft.h"
 
-class IDesigner
+class CPictureDraft;
+
+struct IDesigner
 {
-public:
 	virtual CPictureDraft CreateDraft(std::istream &data) = 0;
+	virtual ~IDesigner() = default;
 };

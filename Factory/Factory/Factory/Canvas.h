@@ -9,8 +9,8 @@ public:
 	CCanvas(std::ostream & out);
 	
 	void SetColor(Color color) override;
-	void DrawLine(sf::Vector2f const & from, sf::Vector2f const & to) override;
-	void DrawEllipse(float left, float top, float width, float height) override;
+	void DrawLine(Vec2 const & from, Vec2 const & to) override;
+	void DrawEllipse(double left, double top, double width, double height) override;
 	void OutputText(std::string const & text) override;
 
 private:

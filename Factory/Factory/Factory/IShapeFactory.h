@@ -5,8 +5,8 @@
 
 class CShape;
 
-class IShapeFactory
+struct IShapeFactory
 {
-public:
 	virtual std::shared_ptr<CShape> CreateShape(std::istream & description) = 0;
+	virtual ~IShapeFactory() = default;
 };

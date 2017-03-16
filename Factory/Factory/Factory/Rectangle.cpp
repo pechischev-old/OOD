@@ -1,10 +1,10 @@
 #include <SFML/System/Vector2.hpp>
 #include "Rectangle.h"
-
+#include "ICanvas.h"
 
 using namespace sf;
 
-CRectangle::CRectangle(Color color, sf::Vector2f leftTop, sf::Vector2f rightBottom)
+CRectangle::CRectangle(Color color, Vec2 leftTop, Vec2 rightBottom)
 	: CShape(color)
 	, m_leftTop(leftTop)
 	, m_rightBottom(rightBottom)
@@ -15,18 +15,18 @@ void CRectangle::Draw(ICanvas & canvas)
 {
 
 	canvas.SetColor(GetColor());
-	canvas.DrawLine(m_leftTop, Vector2f(m_rightBottom.x, m_leftTop.y));
-	canvas.DrawLine(Vector2f(m_rightBottom.x, m_leftTop.y), m_rightBottom);
-	canvas.DrawLine(m_rightBottom, Vector2f(m_leftTop.x, m_rightBottom.y));
-	canvas.DrawLine(Vector2f(m_leftTop.x, m_rightBottom.y), m_leftTop);
+	canvas.DrawLine(m_leftTop, Vec2(m_rightBottom.x, m_leftTop.y));
+	canvas.DrawLine(Vec2(m_rightBottom.x, m_leftTop.y), m_rightBottom);
+	canvas.DrawLine(m_rightBottom, Vec2(m_leftTop.x, m_rightBottom.y));
+	canvas.DrawLine(Vec2(m_leftTop.x, m_rightBottom.y), m_leftTop);
 }
 
-sf::Vector2f CRectangle::GetLeftTop() const
+Vec2 CRectangle::GetLeftTop() const
 {
 	return m_leftTop;
 }
 
-sf::Vector2f CRectangle::GetRightBottom() const
+Vec2 CRectangle::GetRightBottom() const
 {
 	return m_rightBottom;
 }

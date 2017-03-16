@@ -1,8 +1,8 @@
 #include "Ellipse.h"
+#include "ICanvas.h"
 
 
-
-CEllipse::CEllipse(Color color, sf::Vector2f const & center, float width, float height)
+CEllipse::CEllipse(Color color, Vec2 const & center, double width, double height)
 	: CShape(color)
 	, m_center(center)
 	, m_horizontalRadius(width)
@@ -20,17 +20,17 @@ void CEllipse::Draw(ICanvas & canvas)
 	canvas.DrawEllipse(m_center.x, m_center.y, m_horizontalRadius, m_verticalRadius);
 }
 
-sf::Vector2f CEllipse::GetCenter() const
+Vec2 CEllipse::GetCenter() const
 {
 	return m_center;
 }
 
-float CEllipse::GetHorizontalRadius() const
+double CEllipse::GetHorizontalRadius() const
 {
 	return m_horizontalRadius;
 }
 
-float CEllipse::GetVerticalRadius() const
+double CEllipse::GetVerticalRadius() const
 {
 	return m_verticalRadius;
 }

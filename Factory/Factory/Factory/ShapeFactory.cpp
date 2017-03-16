@@ -81,10 +81,10 @@ std::shared_ptr<CShape> CShapeFactory::CreateShape(std::istream & description)
 
 std::shared_ptr<CShape> CShapeFactory::CreateRectangle(Color color, std::istream & description)
 {
-	float left, top, right, bottom;
+	double left, top, right, bottom;
 	if (description >> left >> top >> right >> bottom)
 	{
-		return std::make_shared<CRectangle>(color, sf::Vector2f(left, top), sf::Vector2f(right, bottom));
+		return std::make_shared<CRectangle>(color, Vec2(left, top), Vec2(right, bottom));
 	}
 	else
 	{
@@ -94,10 +94,10 @@ std::shared_ptr<CShape> CShapeFactory::CreateRectangle(Color color, std::istream
 
 std::shared_ptr<CShape> CShapeFactory::CreateTriangle(Color color, std::istream & description)
 {
-	float x1, x2, x3, y1, y2, y3;
+	double x1, x2, x3, y1, y2, y3;
 	if (description >> x1 >> y1 >> x2 >> y2 >> x3 >> y3)
 	{
-		return std::make_shared<CTriangle>(color, sf::Vector2f(x1, y1), sf::Vector2f(x2, y2), sf::Vector2f(x3, y3));
+		return std::make_shared<CTriangle>(color, Vec2(x1, y1), Vec2(x2, y2), Vec2(x3, y3));
 	}
 	else
 	{
@@ -107,10 +107,10 @@ std::shared_ptr<CShape> CShapeFactory::CreateTriangle(Color color, std::istream 
 
 std::shared_ptr<CShape> CShapeFactory::CreateEllipse(Color color, std::istream & description)
 {
-	float x, y, width, height;
+	double x, y, width, height;
 	if (description >> x >> y >> width >> height) 
 	{ 
-		return std::make_shared<CEllipse>(color, sf::Vector2f(x, y), width, height);
+		return std::make_shared<CEllipse>(color, Vec2(x, y), width, height);
 	}
 	else
 	{
@@ -120,11 +120,11 @@ std::shared_ptr<CShape> CShapeFactory::CreateEllipse(Color color, std::istream &
 
 std::shared_ptr<CShape> CShapeFactory::CreatePolygon(Color color, std::istream & description)
 {
-	float x, y, radius;
+	double x, y, radius;
 	unsigned vertexCount;
 	if (description >> x >> y >> radius >> vertexCount)
 	{
-		return std::make_shared<CRegularPolygon>(color, sf::Vector2f(x, y), radius, vertexCount);
+		return std::make_shared<CRegularPolygon>(color, Vec2(x, y), radius, vertexCount);
 	}
 	else
 	{

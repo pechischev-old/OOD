@@ -1,22 +1,21 @@
 #pragma once
-#include <SFML/System/Vector2.hpp>
 #include "Shape.h"
 
 class CEllipse : public CShape
 {
 public:
-	CEllipse(Color color, sf::Vector2f const & center, float width, float height);
+	CEllipse(Color color, Vec2 const & center, double width, double height);
 	~CEllipse();
 
 	void Draw(ICanvas & canvas) override;
 
-	sf::Vector2f GetCenter() const;
-	float GetHorizontalRadius() const;
-	float GetVerticalRadius() const;
+	Vec2 GetCenter() const;
+	double GetHorizontalRadius() const;
+	double GetVerticalRadius() const;
 
 private:
-	float m_horizontalRadius;
-	float m_verticalRadius;
-	sf::Vector2f m_center;
+	double m_horizontalRadius;
+	double m_verticalRadius;
+	Vec2 m_center;
 };
 

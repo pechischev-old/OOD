@@ -1,5 +1,6 @@
 #include "Painter.h"
-
+#include "ICanvas.h"
+#include "PictureDraft.h"
 
 CPainter::CPainter()
 {

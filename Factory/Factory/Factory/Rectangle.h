@@ -1,21 +1,20 @@
 #pragma once
 #include "Shape.h"
-#include <SFML/System/Vector2.hpp>
 
 
 class CRectangle : public CShape
 {
 public:
-	CRectangle(Color color, sf::Vector2f leftTop, sf::Vector2f rightBottom);
+	CRectangle(Color color, Vec2 leftTop, Vec2 rightBottom);
 	~CRectangle() = default;
 
 	void Draw(ICanvas & canvas) override;
 	
-	sf::Vector2f GetLeftTop() const;
-	sf::Vector2f GetRightBottom() const;
+	Vec2 GetLeftTop() const;
+	Vec2 GetRightBottom() const;
 
 private:
-	sf::Vector2f m_leftTop;
-	sf::Vector2f m_rightBottom;
+	Vec2 m_leftTop;
+	Vec2 m_rightBottom;
 };
 
