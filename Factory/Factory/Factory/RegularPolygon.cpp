@@ -17,6 +17,7 @@ CRegularPolygon::~CRegularPolygon()
 
 void CRegularPolygon::Draw(ICanvas & canvas)
 {
+	canvas.SetColor(GetColor());
 	double angle = 360.f / m_vertexCount;
 	auto predPoint = GetCoordinatePoint(angle, 0);
 

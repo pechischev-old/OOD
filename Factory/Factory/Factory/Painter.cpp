@@ -12,11 +12,11 @@ CPainter::~CPainter()
 
 void CPainter::DrawPicture(CPictureDraft & draft, ICanvas & canvas)
 {
+	canvas.BeginDraw();
 	for (size_t i = 0; i < draft.GetShapeCount(); ++i)
 	{
-		canvas.OutputText("---- Begin draw shape -----");
 		auto shape = draft.GetShape(i);
 		shape->Draw(canvas);
-		canvas.OutputText("---- End draw shape -----");
 	}
+	canvas.EndDraw();
 }

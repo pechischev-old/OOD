@@ -40,7 +40,7 @@ namespace
 		}
 		else
 		{
-			throw std::invalid_argument("unknown color type");
+			return Color::Black;
 		}
 	}
 };
