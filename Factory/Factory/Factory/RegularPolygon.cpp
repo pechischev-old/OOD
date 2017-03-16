@@ -1,5 +1,9 @@
+#define _USE_MATH_DEFINES
+
 #include "RegularPolygon.h"
 #include "ICanvas.h"
+#include <math.h>
+
 
 
 CRegularPolygon::CRegularPolygon(Color color, Vec2 const & center, double radius, unsigned vertexCount)
@@ -18,10 +22,10 @@ CRegularPolygon::~CRegularPolygon()
 void CRegularPolygon::Draw(ICanvas & canvas) const
 {
 	canvas.SetColor(GetColor());
-	double angle = 360.f / m_vertexCount;
+	double angle = 2.f * M_PI / m_vertexCount;
 	auto predPoint = GetCoordinatePoint(angle, 0);
 
-	for (unsigned vertex = 1; vertex < m_vertexCount; ++vertex)
+	for (unsigned vertex = 1; vertex <= m_vertexCount; ++vertex)
 	{
 		auto nextPoint = GetCoordinatePoint(angle, vertex);
 		canvas.DrawLine(predPoint, nextPoint);
