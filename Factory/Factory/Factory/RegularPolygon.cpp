@@ -15,7 +15,7 @@ CRegularPolygon::~CRegularPolygon()
 {
 }
 
-void CRegularPolygon::Draw(ICanvas & canvas)
+void CRegularPolygon::Draw(ICanvas & canvas) const
 {
 	canvas.SetColor(GetColor());
 	double angle = 360.f / m_vertexCount;

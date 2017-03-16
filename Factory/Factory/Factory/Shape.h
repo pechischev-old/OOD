@@ -14,7 +14,7 @@ public:
 	CShape(Color color);
 	virtual ~CShape() = default;
 
-	virtual void Draw(ICanvas & canvas) = 0;
+	virtual void Draw(ICanvas & canvas) const = 0;
 
 	Color GetColor() const;
 

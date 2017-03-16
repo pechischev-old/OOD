@@ -11,7 +11,7 @@ CRectangle::CRectangle(Color color, Vec2 leftTop, Vec2 rightBottom)
 {
 }
 
-void CRectangle::Draw(ICanvas & canvas)
+void CRectangle::Draw(ICanvas & canvas) const
 {
 
 	canvas.SetColor(GetColor());

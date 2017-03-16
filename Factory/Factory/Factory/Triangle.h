@@ -7,7 +7,7 @@ public:
 	CTriangle(Color color, Vec2 const & vertex1, Vec2 const & vertex2, Vec2 const & vertex3);
 	~CTriangle();
 
-	void Draw(ICanvas & canvas) override;
+	void Draw(ICanvas & canvas) const override;
 
 	Vec2 GetVertex1() const;
 	Vec2 GetVertex2() const;

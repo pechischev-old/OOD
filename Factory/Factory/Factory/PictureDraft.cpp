@@ -11,17 +11,22 @@ CPictureDraft::~CPictureDraft()
 {
 }
 
-unsigned CPictureDraft::GetShapeCount() const
+bool CPictureDraft::IsEmpty() const
 {
-	return m_shapes.size();;
+	return m_shapes.empty();
 }
 
-void CPictureDraft::AddShape(std::shared_ptr<CShape> & shape)
+CPictureDraft::ConstIterator CPictureDraft::begin() const
 {
-	m_shapes.push_back(shape);
+	return m_shapes.begin();
 }
 
-std::shared_ptr<CShape> CPictureDraft::GetShape(unsigned index) const
+CPictureDraft::ConstIterator CPictureDraft::end() const
 {
-	return m_shapes.at(index);
+	return m_shapes.end();
+}
+
+void CPictureDraft::AddShape(std::unique_ptr<CShape>&& shape)
+{
+	m_shapes.push_back(std::move(shape));
 }

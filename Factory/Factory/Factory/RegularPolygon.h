@@ -8,7 +8,7 @@ public:
 	CRegularPolygon(Color color, Vec2 const & center, double radius, unsigned vertexCount);
 	~CRegularPolygon();
 
-	void Draw(ICanvas & canvas) override;
+	void Draw(ICanvas & canvas) const override;
 
 	unsigned GetVertexCount() const;
 	Vec2 GetCenter() const;

@@ -15,7 +15,7 @@ CEllipse::~CEllipse()
 {
 }
 
-void CEllipse::Draw(ICanvas & canvas)
+void CEllipse::Draw(ICanvas & canvas) const
 {
 	canvas.SetColor(GetColor());
 	canvas.DrawEllipse(m_center.x, m_center.y, m_horizontalRadius, m_verticalRadius);

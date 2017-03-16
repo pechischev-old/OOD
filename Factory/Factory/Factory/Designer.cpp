@@ -20,7 +20,7 @@ CPictureDraft CDesigner::CreateDraft(std::istream & data)
 		{
 			auto stringStream = std::istringstream(inputString);
 			auto shape = m_factory.CreateShape(stringStream);
-			draft.AddShape(shape);
+			draft.AddShape(std::move(shape));
 		}
 		catch (std::exception & error)
 		{

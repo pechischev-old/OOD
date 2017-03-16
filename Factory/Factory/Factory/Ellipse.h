@@ -7,7 +7,7 @@ public:
 	CEllipse(Color color, Vec2 const & center, double width, double height);
 	~CEllipse();
 
-	void Draw(ICanvas & canvas) override;
+	void Draw(ICanvas & canvas) const override;
 
 	Vec2 GetCenter() const;
 	double GetHorizontalRadius() const;
