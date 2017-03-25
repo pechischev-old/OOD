@@ -7,9 +7,15 @@ using Function = std::function<void()>;
 
 namespace FlyBehavior 
 {
-	void FlyWithWings()
+	Function FlyWithWings()
 	{
-		std::cout << "I'm flying with wings!! ";
+		size_t m_countDepartures = 0;
+		return [m_countDepartures]() mutable
+		{
+			std::cout << "I'm flying with wings!! ";
+			++m_countDepartures;
+			std::cout << "It's my " << m_countDepartures << " flight!" << std::endl;
+		};
 	}
 
 	void FlyNoWay() {}

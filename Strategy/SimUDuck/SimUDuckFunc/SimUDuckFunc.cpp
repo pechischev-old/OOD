@@ -63,7 +63,7 @@ class RedheadDuck : public Duck
 {
 public:
 	RedheadDuck()
-		: Duck(FlyBehavior::FlyWithWings, QuackBehavior::Quack, DanceBehavior::DanceMinuet)
+		: Duck(FlyBehavior::FlyWithWings(), QuackBehavior::Quack, DanceBehavior::DanceMinuet)
 	{
 	}
 	void Display() const override
@@ -136,6 +136,8 @@ void main()
 	MallardDuck mallarDuck;
 	PlayWithDuck(mallarDuck);
 	RedheadDuck redheadDuck;
+	PlayWithDuck(redheadDuck);
+	PlayWithDuck(redheadDuck);
 	PlayWithDuck(redheadDuck);
 	RubberDuck rubberDuck;
 	PlayWithDuck(rubberDuck);
