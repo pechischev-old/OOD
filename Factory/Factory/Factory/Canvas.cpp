@@ -26,6 +26,7 @@ namespace
 
 CCanvas::CCanvas(std::ostream & out)
 	: m_out(out)
+	, m_color(Color::Black)
 {
 }
 

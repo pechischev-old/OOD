@@ -7,13 +7,13 @@ struct ICanvas;
 class CClient
 {
 public:
-	CClient(std::unique_ptr<IPainter> && painter, std::unique_ptr<IDesigner> && designer);
+	CClient(IPainter & painter, IDesigner & designer);
 	~CClient();
 
-	void MakePictureOrder();
+	void DrawPicture(std::istream & cin);
 private:
-	std::unique_ptr<IPainter> m_pPainter;
-	std::unique_ptr<IDesigner> m_pDesigner;
+	IPainter & m_painter;
+	IDesigner & m_designer;
 	std::unique_ptr<ICanvas> m_pCanvas;
 };
 

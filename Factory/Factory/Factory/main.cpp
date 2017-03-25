@@ -15,9 +15,8 @@ int main()
 	CDesigner designer(factory);
 	CPainter painter;
 
-	CClient client(make_unique<CPainter>(), make_unique<CDesigner>(factory));
-	client.MakePictureOrder();
-
+	CClient client(painter, designer);
+	client.DrawPicture(cin);
     return 0;
 }
 

@@ -7,20 +7,19 @@
 #include "Canvas.h"
 
 
-CClient::CClient(std::unique_ptr<IPainter> && painter, std::unique_ptr<IDesigner> && designer)
-	: m_pPainter(std::move(painter))
-	, m_pDesigner(std::move(designer))
+CClient::CClient(IPainter & painter, IDesigner & designer)
+	: m_painter(painter)
+	, m_designer(designer)
 	, m_pCanvas(std::make_unique<CCanvas>(std::cout))
 {
 }
-
 
 CClient::~CClient()
 {
 }
 
-void CClient::MakePictureOrder()
+void CClient::DrawPicture(std::istream & cin)
 {
-	auto draft = m_pDesigner->CreateDraft(std::cin);
-	m_pPainter->DrawPicture(draft, *m_pCanvas);
+	auto draft = m_designer.CreateDraft(cin);
+	m_painter.DrawPicture(draft, *m_pCanvas);
 }
