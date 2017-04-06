@@ -13,20 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Заголовочные файлы\Shapes">
-      <UniqueIdentifier>{3b1175b1-492b-4478-a2d7-787e6bd13b7c}</UniqueIdentifier>
+    <Filter Include="Заголовочные файлы\Canvas">
+      <UniqueIdentifier>{0ffca64a-79b2-4ad6-bf5d-e10821064e58}</UniqueIdentifier>
     </Filter>
     <Filter Include="Заголовочные файлы\Designer">
       <UniqueIdentifier>{6507c417-9bea-4482-84b2-7fa0538eafe5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Заголовочные файлы\Canvas">
-      <UniqueIdentifier>{0ffca64a-79b2-4ad6-bf5d-e10821064e58}</UniqueIdentifier>
     </Filter>
     <Filter Include="Заголовочные файлы\Factory">
       <UniqueIdentifier>{d14d89ec-b269-416e-a654-203ff7c84fab}</UniqueIdentifier>
     </Filter>
     <Filter Include="Заголовочные файлы\Painter">
       <UniqueIdentifier>{974a5992-8208-4f75-a81f-f609d7748aa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Заголовочные файлы\Shapes">
+      <UniqueIdentifier>{3b1175b1-492b-4478-a2d7-787e6bd13b7c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -39,17 +39,11 @@
     <ClInclude Include="targetver.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="PictureDraft.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="IShapeFactory.h">
       <Filter>Заголовочные файлы\Factory</Filter>
     </ClInclude>
     <ClInclude Include="ShapeFactory.h">
       <Filter>Заголовочные файлы\Factory</Filter>
-    </ClInclude>
-    <ClInclude Include="Client.h">
-      <Filter>Заголовочные файлы</Filter>
     </ClInclude>
     <ClInclude Include="Ellipse.h">
       <Filter>Заголовочные файлы\Shapes</Filter>
@@ -93,6 +87,12 @@
     <ClInclude Include="Painter.h">
       <Filter>Заголовочные файлы\Painter</Filter>
     </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Файлы исходного кода</Filter>
+    </ClInclude>
+    <ClInclude Include="PictureDraft.h">
+      <Filter>Файлы исходного кода</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -106,9 +106,6 @@
     </ClCompile>
     <ClCompile Include="ShapeFactory.cpp">
       <Filter>Заголовочные файлы\Factory</Filter>
-    </ClCompile>
-    <ClCompile Include="Client.cpp">
-      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="Ellipse.cpp">
       <Filter>Заголовочные файлы\Shapes</Filter>
@@ -133,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="Painter.cpp">
       <Filter>Заголовочные файлы\Painter</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>Файлы исходного кода</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
