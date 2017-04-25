@@ -5,6 +5,7 @@
 #include "modern_graphics_lib/ModernGraphicsRenderer.h"
 #include "shape_drawing_lib/Rectangle.h"
 #include "shape_drawing_lib/Triangle.h"
+#include "CanvasAdapter.h"
 
 
 // Пространство имен приложения (доступно для модификации)
@@ -18,7 +19,9 @@ namespace app
 		CTriangle triangle({ 10, 15 }, { 100, 200 }, { 150, 250 });
 		CRectangle rectangle({ 30, 40 }, 18, 24);
 
-	// TODO: нарисовать прямоугольник и треугольник при помощи painter
+		painter.Draw(triangle);
+		painter.Draw(rectangle);
+
 	}
 
 	void PaintPictureOnCanvas()
@@ -31,10 +34,9 @@ namespace app
 	void PaintPictureOnModernGraphicsRenderer()
 	{
 		modern_graphics_lib::CModernGraphicsRenderer renderer(std::cout);
-		(void)&renderer; // устраняем предупреждение о неиспользуемой переменной
+		CCanvasAdapter adapter(renderer);
 
-						 // TODO: при помощи существующей функции PaintPicture() нарисовать
-						 // картину на renderer
-						 // Подсказка: используйте паттерн "Адаптер"
+		shape_drawing_lib::CCanvasPainter painter(adapter);
+		PaintPicture(painter);
 	}
 }

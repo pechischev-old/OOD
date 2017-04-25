@@ -14,7 +14,10 @@ public:
 	CRectangle(const Point & leftTop, int width, int height);
 
 	void Draw(graphics_lib::ICanvas & canvas)const override;
+
 private:
-	// TODO: дописать приватную часть 
+	Point m_leftTop;
+	int m_width;
+	int m_height;
 };
-};
+}

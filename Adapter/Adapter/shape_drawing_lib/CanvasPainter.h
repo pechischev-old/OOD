@@ -16,5 +16,6 @@ public:
 
 private:
 	// TODO: дописать приватную часть
+	graphics_lib::ICanvas & m_canvas;
 };
 };

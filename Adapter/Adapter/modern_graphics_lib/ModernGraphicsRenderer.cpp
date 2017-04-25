@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+п»ї#include "../stdafx.h"
 #include "ModernGraphicsRenderer.h"
 
 namespace modern_graphics_lib
@@ -10,7 +10,7 @@ namespace modern_graphics_lib
 
 	CModernGraphicsRenderer::~CModernGraphicsRenderer() 
 	{
-		if (m_drawing) // Завершаем рисование, если оно было начато
+		if (m_drawing) // Р—Р°РІРµСЂС€Р°РµРј СЂРёСЃРѕРІР°РЅРёРµ, РµСЃР»Рё РѕРЅРѕ Р±С‹Р»Рѕ РЅР°С‡Р°С‚Рѕ
 		{
 			EndDraw();
 		}
@@ -26,17 +26,17 @@ namespace modern_graphics_lib
 		m_drawing = true;
 	}
 
-	// Выполняет рисование линии
+	// Р’С‹РїРѕР»РЅСЏРµС‚ СЂРёСЃРѕРІР°РЅРёРµ Р»РёРЅРёРё
 	void CModernGraphicsRenderer::DrawLine(const CPoint & start, const CPoint & end)
 	{
 		if (!m_drawing)
 		{
 			throw std::logic_error("DrawLine is allowed between BeginDraw()/EndDraw() only");
 		}
-		m_out << boost::format(R"(  <line fromX="%1%" fromY="%2" toX="%3%" toY="%4%"/>)") << std::endl;
+		m_out << boost::format(R"(  <line fromX="%1%" fromY="%2%" toX="%3%" toY="%4%"/>)") % start.x % start.y % end.x % end.y << std::endl;
 	}
 
-	// Этот метод должен быть вызван в конце рисования
+	// Р­С‚РѕС‚ РјРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІС‹Р·РІР°РЅ РІ РєРѕРЅС†Рµ СЂРёСЃРѕРІР°РЅРёСЏ
 	void CModernGraphicsRenderer::EndDraw()
 	{
 		if (!m_drawing)

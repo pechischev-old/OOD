@@ -16,6 +16,7 @@
 #include <string>
 #include <boost/format.hpp>
 #include <cstdint>
+#include <iomanip>
 
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы

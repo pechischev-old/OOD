@@ -15,7 +15,9 @@ public:
 
 	void Draw(graphics_lib::ICanvas & canvas)const override;
 private:
-	// TODO: дописать приватную часть
+	Point m_p1;
+	Point m_p2;
+	Point m_p3;
 };
 
 };

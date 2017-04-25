@@ -7,13 +7,13 @@ namespace shape_drawing_lib
 {
 	
 CCanvasPainter::CCanvasPainter(graphics_lib::ICanvas & canvas)
+	: m_canvas(canvas)
 {
-	// TODO: дописать конструктор класса
 }
 
 void CCanvasPainter::Draw(const ICanvasDrawable & drawable)
 {
-	// TODO: дописать код рисования ICanvasDrawable на canvas, переданном в конструктор
+	drawable.Draw(m_canvas);
 }
 	
 };

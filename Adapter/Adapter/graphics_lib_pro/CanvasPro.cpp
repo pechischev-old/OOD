@@ -8,15 +8,14 @@ namespace graphics_lib_pro
 
 	void CCanvasPro::SetColor(uint32_t rgbColor)
 	{
-		// TODO: вывести в output цвет в виде строки SetColor (#RRGGBB)
-		std::cout << rgbColor << std::endl;
+		std::cout << "SetColor " << "(#" << rgbColor << ")" << std::endl;
 	}
 	void CCanvasPro::MoveTo(int x, int y)
 	{
-		// Реализация остается без изменения
+		std::cout << "moveTo " << x << " " << y << std::endl;
 	}
 	void CCanvasPro::LineTo(int x, int y)
 	{
-		// Реализация остается без изменения
+		std::cout << "LineTo " << x << " " << y << std::endl;
 	}
 };
