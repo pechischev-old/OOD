@@ -122,5 +122,8 @@
     <ClCompile Include="CanvasClassAdapter.cpp">
       <Filter>CanvasClassAdapter</Filter>
     </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
