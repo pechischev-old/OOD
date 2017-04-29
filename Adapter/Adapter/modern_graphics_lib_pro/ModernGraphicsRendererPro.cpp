@@ -39,7 +39,7 @@ void CModernGraphicsRendererPro::DrawLine(const CPoint & start, const CPoint & e
 		throw std::logic_error("DrawLine is allowed between BeginDraw()/EndDraw() only");
 	}
 	m_out << boost::format(R"(  <line fromX="%1%" fromY="%2%" toX="%3%" toY="%4%">)") % start.x % start.y % end.x % end.y << std::endl;
-	m_out << boost::format(R"(  \t<color r="%1%" g="%2%" b="%3%" a="%4%"/>)") % color.a % color.g % color.b % color.a << std::endl;
+	m_out << boost::format(R"(    <color r="%1$.2f" g="%2$.2f" b="%3$.2f" a="%4$.2f"/>)") % color.r % color.g % color.b % color.a << std::endl;
 	m_out << R"(  </line>)" << std::endl;
 }
 

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы исходного кода">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Заголовочные файлы">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="including_files">
+      <UniqueIdentifier>{a98e0e62-ac7c-4164-9d08-4b8c9e4e1d5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="including_files\for_adapter">
+      <UniqueIdentifier>{9d11f42b-4059-401a-92fc-d30cf544c2da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="including_files\for_pro_adapter">
+      <UniqueIdentifier>{e29be396-331b-44e4-a8e2-78e3c895f43f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\CanvasAdapterPro.h">
+      <Filter>including_files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\CanvasClassAdapter.h">
+      <Filter>including_files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\CanvasAdapter.h">
+      <Filter>including_files\for_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\modern_graphics_lib\ModernGraphicsRenderer.h">
+      <Filter>including_files\for_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\shape_drawing_lib\CanvasPainter.h">
+      <Filter>including_files\for_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\shape_drawing_lib\Point.h">
+      <Filter>including_files\for_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\shape_drawing_lib\Rectangle.h">
+      <Filter>including_files\for_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\shape_drawing_lib\Triangle.h">
+      <Filter>including_files\for_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\shape_drawing_lib_pro\CanvasPainterPro.h">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\shape_drawing_lib_pro\RectanglePro.h">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\shape_drawing_lib_pro\TrianglePro.h">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\modern_graphics_lib_pro\ModernGraphicsRendererPro.h">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Adapter\modern_graphics_lib_pro\RGBAColor.h">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="AdapterTests.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasObjectAdapterTest.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\CanvasAdapter.cpp">
+      <Filter>including_files\for_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\modern_graphics_lib\ModernGraphicsRenderer.cpp">
+      <Filter>including_files\for_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\shape_drawing_lib\CanvasPainter.cpp">
+      <Filter>including_files\for_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\shape_drawing_lib\Rectangle.cpp">
+      <Filter>including_files\for_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\shape_drawing_lib\Triangle.cpp">
+      <Filter>including_files\for_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\CanvasClassAdapter.cpp">
+      <Filter>including_files</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasClassAdapterTest.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasAdapterProTest.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\shape_drawing_lib_pro\CanvasPainterPro.cpp">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\shape_drawing_lib_pro\RectanglePro.cpp">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\shape_drawing_lib_pro\TrianglePro.cpp">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\modern_graphics_lib_pro\ModernGraphicsRendererPro.cpp">
+      <Filter>including_files\for_pro_adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Adapter\CanvasAdapterPro.cpp">
+      <Filter>including_files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
