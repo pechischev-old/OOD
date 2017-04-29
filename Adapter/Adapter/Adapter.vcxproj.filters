@@ -31,6 +31,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="CanvasAdapterPro">
+      <UniqueIdentifier>{e231e1f4-bbbc-4553-811c-71339c38e2ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shape_drawing_lib_pro">
+      <UniqueIdentifier>{99cad9e7-f064-4bb0-b7dd-bacf6d40baff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -87,6 +93,21 @@
     <ClInclude Include="CanvasClassAdapter.h">
       <Filter>CanvasClassAdapter</Filter>
     </ClInclude>
+    <ClInclude Include="CanvasAdapterPro.h">
+      <Filter>CanvasAdapterPro</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_drawing_lib_pro\CanvasPainterPro.h">
+      <Filter>shape_drawing_lib_pro</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_drawing_lib_pro\ICanvasDrawablePro.h">
+      <Filter>shape_drawing_lib_pro</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_drawing_lib_pro\RectanglePro.h">
+      <Filter>shape_drawing_lib_pro</Filter>
+    </ClInclude>
+    <ClInclude Include="shape_drawing_lib_pro\TrianglePro.h">
+      <Filter>shape_drawing_lib_pro</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graphics_lib\Canvas.cpp">
@@ -124,6 +145,18 @@
     </ClCompile>
     <ClCompile Include="Application.cpp">
       <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasAdapterPro.cpp">
+      <Filter>CanvasAdapterPro</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_drawing_lib_pro\CanvasPainterPro.cpp">
+      <Filter>shape_drawing_lib_pro</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_drawing_lib_pro\RectanglePro.cpp">
+      <Filter>shape_drawing_lib_pro</Filter>
+    </ClCompile>
+    <ClCompile Include="shape_drawing_lib_pro\TrianglePro.cpp">
+      <Filter>shape_drawing_lib_pro</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

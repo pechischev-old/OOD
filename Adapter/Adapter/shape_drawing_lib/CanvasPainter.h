@@ -15,7 +15,6 @@ public:
 	void Draw(const ICanvasDrawable & drawable);
 
 private:
-	// TODO: дописать приватную часть
 	graphics_lib::ICanvas & m_canvas;
 };
 };

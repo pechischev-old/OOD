@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="CanvasAdapter.h" />
+    <ClInclude Include="CanvasAdapterPro.h" />
     <ClInclude Include="CanvasClassAdapter.h" />
     <ClInclude Include="graphics_lib\Canvas.h" />
     <ClInclude Include="graphics_lib\ICanvas.h" />
@@ -160,6 +161,10 @@
     <ClInclude Include="shape_drawing_lib\Point.h" />
     <ClInclude Include="shape_drawing_lib\Rectangle.h" />
     <ClInclude Include="shape_drawing_lib\Triangle.h" />
+    <ClInclude Include="shape_drawing_lib_pro\CanvasPainterPro.h" />
+    <ClInclude Include="shape_drawing_lib_pro\ICanvasDrawablePro.h" />
+    <ClInclude Include="shape_drawing_lib_pro\RectanglePro.h" />
+    <ClInclude Include="shape_drawing_lib_pro\TrianglePro.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -167,6 +172,7 @@
     <ClCompile Include="Adapter.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="CanvasAdapter.cpp" />
+    <ClCompile Include="CanvasAdapterPro.cpp" />
     <ClCompile Include="CanvasClassAdapter.cpp" />
     <ClCompile Include="graphics_lib\Canvas.cpp" />
     <ClCompile Include="graphics_lib_pro\CanvasPro.cpp" />
@@ -175,6 +181,9 @@
     <ClCompile Include="shape_drawing_lib\CanvasPainter.cpp" />
     <ClCompile Include="shape_drawing_lib\Rectangle.cpp" />
     <ClCompile Include="shape_drawing_lib\Triangle.cpp" />
+    <ClCompile Include="shape_drawing_lib_pro\CanvasPainterPro.cpp" />
+    <ClCompile Include="shape_drawing_lib_pro\RectanglePro.cpp" />
+    <ClCompile Include="shape_drawing_lib_pro\TrianglePro.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

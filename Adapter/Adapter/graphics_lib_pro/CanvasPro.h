@@ -5,7 +5,7 @@ namespace graphics_lib_pro
 {
 
 // Реализация холста для рисования
-class CCanvasPro : public ICanvasPro
+class CCanvas : public ICanvas
 {
 public:
 	void SetColor(uint32_t rgbColor) override;

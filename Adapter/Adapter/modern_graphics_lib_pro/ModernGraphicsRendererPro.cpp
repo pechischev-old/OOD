@@ -7,35 +7,50 @@ namespace modern_graphics_lib_pro
 {
 
 	
-	CModernGraphicsRendererPro::CModernGraphicsRendererPro(std::ostream & strm)
+CModernGraphicsRendererPro::CModernGraphicsRendererPro(std::ostream & strm)
 	: m_out(strm)
 {
 }
 
-	CModernGraphicsRendererPro::~CModernGraphicsRendererPro()
+CModernGraphicsRendererPro::~CModernGraphicsRendererPro()
 {
-	// Реализация остается без изменения
+	if (m_drawing) // Завершаем рисование, если оно было начато
+	{
+		EndDraw();
+	}
 }
 
 // Этот метод должен быть вызван в начале рисования
 void CModernGraphicsRendererPro::BeginDraw()
 {
-	// Реализация остается без изменения
+	if (m_drawing)
+	{
+		throw std::logic_error("Drawing has already begun");
+	}
+	m_out << "<draw>" << std::endl;
+	m_drawing = true;
 }
 
 // Выполняет рисование линии
 void CModernGraphicsRendererPro::DrawLine(const CPoint & start, const CPoint & end, const CRGBAColor& color)
 {
-	// TODO: выводит в output инструкцию для рисования линии в виде
-	// <line fromX="3" fromY="5" toX="5" toY="17">
-	//   <color r="0.35" g="0.47" b="1.0" a="1.0" />
-	// </line>
-	// Можно вызывать только между BeginDraw() и EndDraw()
+	if (!m_drawing)
+	{
+		throw std::logic_error("DrawLine is allowed between BeginDraw()/EndDraw() only");
+	}
+	m_out << boost::format(R"(  <line fromX="%1%" fromY="%2%" toX="%3%" toY="%4%">)") % start.x % start.y % end.x % end.y << std::endl;
+	m_out << boost::format(R"(  \t<color r="%1%" g="%2%" b="%3%" a="%4%"/>)") % color.a % color.g % color.b % color.a << std::endl;
+	m_out << R"(  </line>)" << std::endl;
 }
 
 // Этот метод должен быть вызван в конце рисования
 void CModernGraphicsRendererPro::EndDraw()
 {
-	// Реализация остается без изменения
+	if (!m_drawing)
+	{
+		throw std::logic_error("Drawing has not been started");
+	}
+	m_out << "</draw>" << std::endl;
+	m_drawing = false;
 }
 };
