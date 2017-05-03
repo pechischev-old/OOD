@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shape">
+      <UniqueIdentifier>{bb65cdf2-11f4-4b97-a0e0-871da4d63169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Style">
+      <UniqueIdentifier>{0f6deacf-44d6-46c9-9af9-59f04c7dd7db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shape\Group">
+      <UniqueIdentifier>{f2aa52d3-ba53-457a-9c5c-38937e85e5d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Figure">
+      <UniqueIdentifier>{06ffc292-bf3d-4be3-af12-65ab71077c27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Slide">
+      <UniqueIdentifier>{159d2793-8d99-4db8-9506-8860d3796b02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleShape.cpp">
+      <Filter>Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="Style.cpp">
+      <Filter>Style</Filter>
+    </ClCompile>
+    <ClCompile Include="Group.cpp">
+      <Filter>Shape\Group</Filter>
+    </ClCompile>
+    <ClCompile Include="StrokeStyle.cpp">
+      <Filter>Style</Filter>
+    </ClCompile>
+    <ClCompile Include="Ellipse.cpp">
+      <Filter>Figure</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Figure</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Figure</Filter>
+    </ClCompile>
+    <ClCompile Include="Slide.cpp">
+      <Filter>Slide</Filter>
+    </ClCompile>
+    <ClCompile Include="Shapes.cpp">
+      <Filter>Shape</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommonTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="IShape.h">
+      <Filter>Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleShape.h">
+      <Filter>Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IShapes.h">
+      <Filter>Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="IStyle.h">
+      <Filter>Style</Filter>
+    </ClInclude>
+    <ClInclude Include="Style.h">
+      <Filter>Style</Filter>
+    </ClInclude>
+    <ClInclude Include="ICanvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IGroupShape.h">
+      <Filter>Shape\Group</Filter>
+    </ClInclude>
+    <ClInclude Include="Group.h">
+      <Filter>Shape\Group</Filter>
+    </ClInclude>
+    <ClInclude Include="StrokeStyle.h">
+      <Filter>Style</Filter>
+    </ClInclude>
+    <ClInclude Include="Ellipse.h">
+      <Filter>Figure</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Figure</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Figure</Filter>
+    </ClInclude>
+    <ClInclude Include="ISlide.h">
+      <Filter>Slide</Filter>
+    </ClInclude>
+    <ClInclude Include="Slide.h">
+      <Filter>Slide</Filter>
+    </ClInclude>
+    <ClInclude Include="Shapes.h">
+      <Filter>Shape</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
