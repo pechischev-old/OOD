@@ -4,8 +4,13 @@
 
 
 
-CEllipse::CEllipse(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle)
+CEllipse::CEllipse(RectD const & frame, IStylePtr const  & fillStyle, IStylePtr const  & outlineStyle)
 	: CShape(frame, fillStyle, outlineStyle)
+{
+}
+
+CEllipse::CEllipse(RectD const & frame)
+	: CShape(frame)
 {
 }
 

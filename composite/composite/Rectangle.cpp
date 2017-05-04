@@ -2,8 +2,13 @@
 #include "Rectangle.h"
 #include "ICanvas.h"
 
-CRectangle::CRectangle(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle)
+CRectangle::CRectangle(RectD const & frame, IStylePtr const  & fillStyle, IStylePtr const  & outlineStyle)
 	: CShape(frame, fillStyle, outlineStyle)
+{
+}
+
+CRectangle::CRectangle(RectD const & frame)
+	: CShape(frame)
 {
 }
 

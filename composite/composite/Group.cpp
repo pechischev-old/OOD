@@ -2,7 +2,7 @@
 
 
 
-CGroup::CGroup(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle)
+CGroup::CGroup(RectD const & frame, IStylePtr const & fillStyle, IStylePtr const & outlineStyle)
 	: CShape(frame, fillStyle, outlineStyle)
 {
 }

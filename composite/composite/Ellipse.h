@@ -5,8 +5,8 @@
 class CEllipse : public CShape
 {
 public:
-	CEllipse(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle);
-
+	CEllipse(RectD const & frame, IStylePtr const  & fillStyle, IStylePtr const & outlineStyle);
+	CEllipse(RectD const & frame);
 protected:
 	void DrawImpl(ICanvas & canvas) override;
 };

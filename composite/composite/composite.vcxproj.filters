@@ -28,6 +28,9 @@
     <Filter Include="Slide">
       <UniqueIdentifier>{159d2793-8d99-4db8-9506-8860d3796b02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Canvas">
+      <UniqueIdentifier>{f336940d-57e7-4e46-a306-ff7b10e261a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="Shapes.cpp">
       <Filter>Shape</Filter>
     </ClCompile>
+    <ClCompile Include="Canvas.cpp">
+      <Filter>Canvas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CommonTypes.h">
@@ -85,9 +91,6 @@
     </ClInclude>
     <ClInclude Include="Style.h">
       <Filter>Style</Filter>
-    </ClInclude>
-    <ClInclude Include="ICanvas.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IGroupShape.h">
       <Filter>Shape\Group</Filter>
@@ -115,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="Shapes.h">
       <Filter>Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="ICanvas.h">
+      <Filter>Canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="Canvas.h">
+      <Filter>Canvas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

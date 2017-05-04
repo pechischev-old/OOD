@@ -2,14 +2,15 @@
 
 #include "IShape.h"
 #include "IDrawable.h"
+#include "StrokeStyle.h"
 
 
-class ICanvas;
+struct ICanvas;
 
 class CShape : public IShape
 {
 public:
-	CShape(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle);
+	CShape(RectD const & frame, IStylePtr const & fillStyle = std::make_shared<CStyle>(false, 0xFFFFFF), IStylePtr const & outlineStyle = std::make_shared<CStrokeStyle>(true, 0xFF0000, 1.f));
 	RectD GetFrame() override;
 	void SetFrame(const RectD & frame) override;
 
@@ -31,6 +32,6 @@ protected:
 
 private:
 	RectD m_frame;
-	IStyle & m_outlineStyle;
-	IStyle & m_fillStyle;
+	IStylePtr m_outlineStyle;
+	IStylePtr m_fillStyle;
 };

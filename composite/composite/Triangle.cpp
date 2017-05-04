@@ -4,8 +4,13 @@
 
 
 
-CTriangle::CTriangle(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle)
+CTriangle::CTriangle(RectD const & frame, IStylePtr const  & fillStyle, IStylePtr const  & outlineStyle)
 	: CShape(frame, fillStyle, outlineStyle)
+{
+}
+
+CTriangle::CTriangle(RectD const & frame)
+	: CShape(frame)
 {
 }
 

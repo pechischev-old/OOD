@@ -1,5 +1,7 @@
 #pragma once
 #include "CommonTypes.h"
+#include <memory>
+
 
 
 class IStyle
@@ -13,3 +15,5 @@ public:
 
 	virtual ~IStyle() = default;
 };
+
+using IStylePtr = std::shared_ptr<IStyle>;

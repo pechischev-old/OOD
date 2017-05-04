@@ -1,9 +1,9 @@
 #pragma once
 #include "CommonTypes.h"
 
-class ICanvas
+struct ICanvas
 {
-public:
+	virtual void SetLineThickness(float thickness) = 0;
 	virtual void SetLineColor(RGBAColor color) = 0;
 	virtual void BeginFill(RGBAColor color) = 0;
 	virtual void EndFill() = 0;
@@ -11,5 +11,5 @@ public:
 	virtual void LineTo(double x, double y) = 0;
 	virtual void DrawEllipse(double left, double top, double width, double height) = 0;
 
-	virtual ~ICanvas() = 0;
+	virtual ~ICanvas() = default;
 };

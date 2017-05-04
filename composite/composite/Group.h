@@ -8,7 +8,7 @@ class CGroup
 	, public CShape
 {
 public:
-	CGroup(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle);
+	CGroup(RectD const & frame, IStylePtr const & fillStyle, IStylePtr const & outlineStyle);
 	~CGroup();
 
 	size_t GetShapesCount()const = 0;

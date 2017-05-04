@@ -1,11 +1,11 @@
 #include "stdafx.h"
 
 #include "SimpleShape.h"
-#include "Style.h"
+#include "ICanvas.h"
 
-CShape::CShape(RectD const & frame, IStyle & fillStyle, IStyle & outlineStyle)
-	: m_fillStyle(CStyle(false, 0x000000))
-	, m_outlineStyle(CStyle(false, 0x000000))
+CShape::CShape(RectD const & frame, IStylePtr const & fillStyle, IStylePtr const & outlineStyle)
+	: m_fillStyle(fillStyle)
+	, m_outlineStyle(outlineStyle)
 	, m_frame(frame)
 {
 }
@@ -22,22 +22,22 @@ void CShape::SetFrame(const RectD & rect)
 
 IStyle & CShape::GetOutlineStyle()
 {
-	return m_outlineStyle;
+	return *m_outlineStyle.get();
 }
 
 const IStyle & CShape::GetOutlineStyle() const
 {
-	return m_outlineStyle;
+	return *m_outlineStyle.get();
 }
 
 IStyle & CShape::GetFillStyle()
 {
-	return m_fillStyle;
+	return *m_fillStyle.get();
 }
 
 const IStyle & CShape::GetFillStyle() const
 {
-	return m_fillStyle;
+	return *m_fillStyle.get();
 }
 
 std::shared_ptr<IGroupShape> CShape::GetGroup()
@@ -52,5 +52,23 @@ std::shared_ptr<const IGroupShape> CShape::GetGroup() const
 
 void CShape::Draw(ICanvas & canvas)
 {
+	if (m_outlineStyle->IsEnabled())
+	{
+		canvas.SetLineColor(m_outlineStyle->GetColor());
+		canvas.SetLineThickness(static_cast<CStrokeStyle*>(m_outlineStyle.get())->GetLineThickness());
+	}
+
+	auto filledShape = false;
+	if (m_fillStyle->IsEnabled())
+	{
+		canvas.BeginFill(m_fillStyle->GetColor());
+		filledShape = true;
+	}
+
 	DrawImpl(canvas);
+
+	if (filledShape)
+	{
+		canvas.EndFill();
+	}
 }
