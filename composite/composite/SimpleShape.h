@@ -14,11 +14,11 @@ public:
 	RectD GetFrame() override;
 	void SetFrame(const RectD & frame) override;
 
-	IStyle & GetOutlineStyle() override;
-	const IStyle & GetOutlineStyle()const override;
+	virtual IStylePtr GetOutlineStyle() const override;
+	virtual void SetOutlineStyle(IStylePtr const & style) override;
 
-	IStyle & GetFillStyle() override;
-	const IStyle & GetFillStyle()const override;
+	virtual IStylePtr GetFillStyle() const override;
+	virtual void SetFillStyle(IStylePtr const & style) override;
 
 	std::shared_ptr<IGroupShape> GetGroup() override;
 	std::shared_ptr<const IGroupShape> GetGroup() const override;

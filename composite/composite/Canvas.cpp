@@ -22,6 +22,7 @@ CCanvas::CCanvas(std::ostream & stream)
 	, m_x(0.0)
 	, m_y(0.0)
 	, m_thickness(0.f)
+	, m_isFilling(false)
 {
 	m_stream << "<svg xmlns='http://www.w3.org/2000/svg'>" << std::endl;
 }
@@ -39,28 +40,50 @@ void CCanvas::SetLineColor(RGBAColor color)
 void CCanvas::BeginFill(RGBAColor color)
 {
 	m_fillColor = color; 
+
+	if (m_isFilling)
+	{
+		throw std::logic_error("filling shape");
+	}
+	m_isFilling = true;
+
 }
 
 void CCanvas::EndFill()
 {
-	m_fillColor = 0xFFFFFF;
+	if (m_isFilling)
+	{
+		
+		auto fillColorRGB = CanvasUtils::ConvertUint32ToRGB(m_fillColor);
+
+		m_isFilling = false;
+
+		std::string polygonStr = "   <polygon points=\"";
+		std::for_each(m_filledPoints.begin(), m_filledPoints.end(), [&](auto point) {
+			polygonStr += (boost::format(R"(%1$.2f %2$.2f )") % point.first % point.second).str();
+		});
+		polygonStr += (boost::format(R"(" fill="%1%"/>)") % fillColorRGB).str();
+		m_stream << polygonStr << std::endl;
+
+		m_filledPoints.clear();
+	}
 }
 
 void CCanvas::MoveTo(double x, double y)
 {
 	m_x = x;
 	m_y = y;
+	if (m_isFilling)
+	{
+		m_filledPoints.push_back(std::pair<double, double>(x, y));
+	}
 }
 
 void CCanvas::LineTo(double x, double y)
 {
-	// TODO: реализовать заполнение фигуры
-
 	auto lineColorRGB = CanvasUtils::ConvertUint32ToRGB(m_outlineColor);
-	/*m_stream << boost::format(R"(  <line x1="%1%" y1="%2%" x2="%3%" y2="%4%" stroke-width="%5$.2f stroke="%6%"/>)") 
-		% m_x % m_y % x % y % m_thickness % lineColorRGB << std::endl;*/
-	m_stream << boost::format(R"(  <line x1="%1%" y1="%2%" x2="%3%" y2="%4%"/>)")
-		% m_x % m_y % x % y << std::endl;
+	m_stream << boost::format(R"(  <line x1="%1%" y1="%2%" x2="%3%" y2="%4%" stroke-width="%5$.2f" stroke="%6%"/>)")
+		% m_x % m_y % x % y % m_thickness % lineColorRGB << std::endl;
 	MoveTo(x, y);
 }
 

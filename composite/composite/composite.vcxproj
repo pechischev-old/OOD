@@ -147,7 +147,6 @@
     <ClCompile Include="Group.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="Shapes.cpp" />
     <ClCompile Include="SimpleShape.cpp" />
     <ClCompile Include="Slide.cpp" />
     <ClCompile Include="StrokeStyle.cpp" />
@@ -165,7 +164,6 @@
     <ClInclude Include="ISlide.h" />
     <ClInclude Include="IStyle.h" />
     <ClInclude Include="Rectangle.h" />
-    <ClInclude Include="Shapes.h" />
     <ClInclude Include="SimpleShape.h" />
     <ClInclude Include="IDrawable.h" />
     <ClInclude Include="IShape.h" />

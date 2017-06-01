@@ -1,6 +1,7 @@
 #pragma once
 #include "ICanvas.h"
 #include <sstream>
+#include <vector>
 
 
 class CCanvas : public ICanvas
@@ -19,11 +20,13 @@ public:
 	~CCanvas();
 
 private:
+	bool m_isFilling;
 	std::ostream & m_stream;
 	RGBAColor m_outlineColor;
 	RGBAColor m_fillColor;
 	double m_x;
 	double m_y;
 	float m_thickness;
+	std::vector<std::pair<double, double>> m_filledPoints;
 };
 

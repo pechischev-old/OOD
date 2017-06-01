@@ -5,7 +5,7 @@
 class CShapes : public IShapes
 {
 public:
-	CShapes();
+	CShapes() = default;
 
 	size_t GetShapesCount()const override;
 	void InsertShape(const IShapePtr & shape, size_t position = std::numeric_limits<size_t>::max()) override;

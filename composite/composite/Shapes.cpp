@@ -38,7 +38,7 @@ void CShapes::RemoveShapeAtIndex(size_t index)
 {
 	if (m_shapes.size() <= index)
 	{
-		throw std::out_of_range("out of range");;
+		throw std::out_of_range("out of range");
 	}
 	m_shapes.erase(m_shapes.begin() + index);
 }

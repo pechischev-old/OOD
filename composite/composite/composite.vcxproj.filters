@@ -60,9 +60,6 @@
     <ClCompile Include="Slide.cpp">
       <Filter>Slide</Filter>
     </ClCompile>
-    <ClCompile Include="Shapes.cpp">
-      <Filter>Shape</Filter>
-    </ClCompile>
     <ClCompile Include="Canvas.cpp">
       <Filter>Canvas</Filter>
     </ClCompile>
@@ -115,9 +112,6 @@
     </ClInclude>
     <ClInclude Include="Slide.h">
       <Filter>Slide</Filter>
-    </ClInclude>
-    <ClInclude Include="Shapes.h">
-      <Filter>Shape</Filter>
     </ClInclude>
     <ClInclude Include="ICanvas.h">
       <Filter>Canvas</Filter>

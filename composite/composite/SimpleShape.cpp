@@ -20,25 +20,27 @@ void CShape::SetFrame(const RectD & rect)
 	m_frame = rect;
 }
 
-IStyle & CShape::GetOutlineStyle()
+
+IStylePtr CShape::GetOutlineStyle() const
 {
-	return *m_outlineStyle.get();
+	return m_outlineStyle;
 }
 
-const IStyle & CShape::GetOutlineStyle() const
+void CShape::SetOutlineStyle(IStylePtr const & style)
 {
-	return *m_outlineStyle.get();
+	m_outlineStyle = style;
 }
 
-IStyle & CShape::GetFillStyle()
+IStylePtr CShape::GetFillStyle() const
 {
-	return *m_fillStyle.get();
+	return m_fillStyle;
 }
 
-const IStyle & CShape::GetFillStyle() const
+void CShape::SetFillStyle(IStylePtr const & style)
 {
-	return *m_fillStyle.get();
+	m_fillStyle = style;
 }
+
 
 std::shared_ptr<IGroupShape> CShape::GetGroup()
 {

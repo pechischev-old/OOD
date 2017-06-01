@@ -9,7 +9,6 @@ class IShape;
 
 class CSlide 
 	: public ISlide
-	, public CShapes
 {
 public:
 	CSlide(double width, double height);
@@ -18,9 +17,13 @@ public:
 	double GetWidth()const override;
 	double GetHeight()const override;
 
+	void AddShape(const IShapePtr & shape);
+	void RemoveShape(size_t index);
+
 	void Draw(ICanvas & canvas);
 private:
 	double m_width;
 	double m_height;
+	std::vector<IShapePtr> m_shapes;
 };
 
