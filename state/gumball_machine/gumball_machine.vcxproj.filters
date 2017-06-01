@@ -20,13 +20,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NaiveGumBallMachine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GumBallMachineWithState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GumBallMachineWithDynamicallyCreatedState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoubleGumBallMachineWithState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NaiveDoubleGumBallMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
