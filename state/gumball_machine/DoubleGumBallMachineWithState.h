@@ -11,6 +11,7 @@ struct IState
 	virtual void EjectQuarter() = 0;
 	virtual void TurnCrank() = 0;
 	virtual void Dispense() = 0;
+	virtual void Refill(unsigned numBalls) = 0;
 	virtual std::string ToString()const = 0;
 	virtual ~IState() = default;
 };
@@ -21,9 +22,12 @@ struct IDoubleGumballMachine
 	virtual unsigned GetBallCount()const = 0;
 	virtual unsigned GetCoinsCount()const = 0;
 
+	virtual void AddBalls(unsigned numBalls) = 0;
 	virtual void AddCoin() = 0;
 	virtual void UseCoin() = 0;
 	virtual void ReturnCoins() = 0;
+
+	virtual void Refill(unsigned numBalls) = 0;
 
 	virtual void SetSoldOutState() = 0;
 	virtual void SetNoQuarterState() = 0;
@@ -63,6 +67,10 @@ public:
 		{
 			m_gumballMachine.SetNoQuarterState();
 		}
+	}
+	void Refill(unsigned numBall) override
+	{
+		m_gumballMachine.AddBalls(numBall);
 	}
 	std::string ToString() const override
 	{
@@ -107,6 +115,23 @@ public:
 	{
 		return "sold out";
 	}
+
+	void Refill(unsigned numBall) override
+	{
+		m_gumballMachine.AddBalls(numBall);
+		if (m_gumballMachine.GetBallCount() == 0)
+		{
+			return;
+		}
+		if (m_gumballMachine.GetCoinsCount() > 0)
+		{
+			m_gumballMachine.SetHasQuarterState();
+		}
+		else
+		{
+			m_gumballMachine.SetNoQuarterState();
+		}
+	}
 private:
 	IDoubleGumballMachine & m_gumballMachine;
 };
@@ -141,6 +166,10 @@ public:
 	{
 		return "waiting for turn of crank";
 	}
+	void Refill(unsigned numBall) override
+	{
+		m_gumballMachine.AddBalls(numBall);
+	}
 private:
 	IDoubleGumballMachine & m_gumballMachine;
 };
@@ -168,6 +197,10 @@ public:
 	void Dispense() override
 	{
 		std::cout << "You need to pay first\n";
+	}
+	void Refill(unsigned numBall) override
+	{
+		m_gumballMachine.AddBalls(numBall);
 	}
 	std::string ToString() const override
 	{
@@ -249,6 +282,11 @@ private:
 		}
 	}
 
+	void AddBalls(unsigned numBalls) override
+	{
+		m_ballCount += numBalls;
+	}
+
 	void UseCoin() override
 	{
 		if (m_coins != 0)
@@ -261,6 +299,11 @@ private:
 	{
 		std::cout << boost::format(R"(%1% coin%2% returned)") % m_coins % (m_coins != 1 ? "s" : "") << std::endl;
 		m_coins = 0;
+	}
+
+	void Refill(unsigned numBall) override
+	{
+		m_state->Refill(numBall);
 	}
 
 	void SetSoldOutState() override
