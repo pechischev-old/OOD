@@ -1,0 +1,37 @@
+.has-border {
+  outline: 1px solid black;
+}
+
+.has-indent-top {
+  margin-top: 10px;
+}
+
+div {
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  margin-top: 5px;
+  padding: 0;
+}
+
+.list-title {
+  border-bottom: 1px solid;
+}
+
+.list {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 149px;
+}
+
+span {
+  padding: 0 10px;
+
+  input[type="number"] {
+    padding-left: 10px;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es6",
+    "outFile": "./js/build/build.js",
+    "sourceRoot": "./ts/"
+  }
+}

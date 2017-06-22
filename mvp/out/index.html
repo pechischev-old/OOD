@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 9. ChartDrawer</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .has-border {
+            outline: 1px solid black;
+        }
+
+        .has-indent-top {
+            margin-top: 10px;
+        }
+
+        div {
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            padding: 0;
+        }
+
+        .list-title {
+            box-sizing: border-box;
+            border-bottom: 1px solid;
+        }
+
+        .list {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            height: 149px;
+        }
+
+        input[type="number"] {
+            padding-left: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 has-border" style="height: 550px">
+                <div class="col-md-5 has-border has-indent-top" style="height: 250px;">
+                    <div class="col-md-12 has-border" style="height: 180px; padding: 0; margin-top: 5px;">
+                        <div class="col-md-12 list-title">Harmonics</div>
+                        <div class="col-md-12 list" id="harmonics-list"></div>
+                    </div>
+                    <div class="col-md-12 has-indent-top" style="height: 50px">
+                        <button class="col-md-5" style="float: left" id="add-harmonic">Add new</button>
+                        <button class="col-md-6" style="float: right; padding: 0" id="remove-harmonic">Delete Selected</button>
+                    </div>
+                </div>
+                <div class="col-md-6 has-border col-md-offset-1 has-indent-top" style="height: 250px;">
+                    <div class="col-md-12">
+                        <span>Amplitude: <input type="number" id="amplitude"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <span><input type="radio" id="ration1" name="function" value="cos" checked/>Sin</span>
+                        <span><input type="radio" id="ration2" name="function" value="sin" />Cos</span>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Frequency: <input type="number" id="frequency"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <span>Phase: <input type="number" id="phase"></span>
+                    </div>
+                </div>
+                <div class="col-md-12 has-border has-indent-top" id="chart" style="height: 250px">
+                    <!-- > Chart location </!-->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
