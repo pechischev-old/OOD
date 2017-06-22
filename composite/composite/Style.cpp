@@ -8,6 +8,12 @@ CStyle::CStyle(bool enable, RGBAColor color)
 {
 }
 
+CStyle::CStyle()
+	: m_enable(false)
+	, m_color(0xFF0000)
+{
+}
+
 bool CStyle::IsEnabled() const
 {
 	return m_enable;
@@ -26,4 +32,14 @@ RGBAColor CStyle::GetColor() const
 void CStyle::SetColor(RGBAColor color)
 {
 	m_color = color;
+}
+
+bool operator==(const CStyle & left, const CStyle & right)
+{
+	return (left.GetColor() == right.GetColor() && left.IsEnabled() == right.IsEnabled());
+}
+
+bool operator!=(const CStyle & left, const CStyle & right)
+{
+	return !(left == right);
 }

@@ -15,7 +15,7 @@ int main()
 	CEllipse ellipse({ 50, 60, 50, 70 }, std::make_shared<CStyle>(true, 0x454545), std::make_shared<CStrokeStyle>(true, 0xFF0000, 1.f));
 	CTriangle triangle({ 40, 100, 40, 40 });
 
-	CGroup group({ 0, 0, 10, 10 });
+	CGroup group;
 	group.InsertShape(std::make_shared<CRectangle>(rect));
 	group.InsertShape(std::make_shared<CTriangle>(triangle));
 

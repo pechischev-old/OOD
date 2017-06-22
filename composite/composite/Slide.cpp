@@ -35,7 +35,7 @@ void CSlide::RemoveShape(size_t index)
 	m_shapes.erase(m_shapes.begin() + index);
 }
 
-void CSlide::Draw(ICanvas & canvas)
+void CSlide::Draw(ICanvas & canvas) const
 {
 	std::for_each(m_shapes.begin(), m_shapes.end(), [&](auto & shape) {
 		shape->Draw(canvas);

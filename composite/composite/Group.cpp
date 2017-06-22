@@ -6,15 +6,13 @@
 
 
 
-CGroup::CGroup(RectD const & frame, IStylePtr const & fillStyle, IStylePtr const & outlineStyle)
+CGroup::CGroup(IStylePtr const & fillStyle, IStylePtr const & outlineStyle)
 	: m_fillStyle(fillStyle)
-	, m_frame(frame)
 	, m_outlineStyle(outlineStyle)
 {
 }
 
-CGroup::CGroup(RectD const & frame)
-	: m_frame(frame)
+CGroup::CGroup()
 {
 }
 
@@ -23,11 +21,6 @@ CGroup::~CGroup()
 {
 }
 
-
-RectD CGroup::GetFrame()
-{
-	return m_frame;
-}
 
 size_t CGroup::GetShapesCount() const
 {
@@ -73,7 +66,8 @@ void CGroup::SetFrame(const RectD & frame)
 	double scaleX = frame.width / oldFrame.width;
 	double scaleY = frame.height / oldFrame.height;
 
-	std::for_each(m_shapes.begin(), m_shapes.end(), [&](auto & shape) {
+	for (auto & shape : m_shapes) 
+	{
 		auto shapeFrame = shape->GetFrame();
 		double paddingX = shapeFrame.left - oldFrame.left;
 		double paddingY = shapeFrame.top - oldFrame.top;
@@ -84,9 +78,25 @@ void CGroup::SetFrame(const RectD & frame)
 		shapeFrame.height *= scaleY;
 
 		shape->SetFrame(shapeFrame);
-	});
+	};
+}
 
-	m_frame = frame;
+RectD CGroup::GetFrame() const
+{
+	if (m_shapes.empty())
+	{
+		return RectD(0, 0, 0, 0);
+	}
+	RectD rect = m_shapes.front()->GetFrame();
+	for (auto &shape : m_shapes)
+	{
+		auto shapeRect = shape->GetFrame();
+		rect.left = std::min(shapeRect.left, rect.left);
+		rect.top = std::min(shapeRect.top, rect.top);
+		rect.width = std::max(shapeRect.width, rect.width);
+		rect.height = std::max(shapeRect.height, rect.height);
+	}
+	return rect;
 }
 
 void CGroup::SetOutlineStyle(IStylePtr const & style)
@@ -115,19 +125,44 @@ std::shared_ptr<const IGroupShape> CGroup::GetGroup() const
 
 IStylePtr CGroup::GetOutlineStyle() const
 {
-	return IStylePtr();
+	IStylePtr style = std::make_shared<CStrokeStyle>();
+	for (auto &shape : m_shapes)
+	{
+		if (!style)
+		{
+			style = shape->GetOutlineStyle();
+		}
+		else if (style != shape->GetOutlineStyle())
+		{
+			return style;
+		}
+	}
+	return style;
 }
 
 IStylePtr CGroup::GetFillStyle() const
 {
-	return IStylePtr();
+	IStylePtr style = std::make_shared<CStyle>();
+	for (auto &shape : m_shapes)
+	{
+		if (!style)
+		{
+			style = shape->GetFillStyle();
+		}
+		else if (style != shape->GetFillStyle())
+		{
+			return style;
+		}
+	}
+	return style;
 }
 
-void CGroup::Draw(ICanvas & canvas)
+void CGroup::Draw(ICanvas & canvas) const
 {
-	std::for_each(m_shapes.begin(), m_shapes.end(), [&](auto & shape) {
+	for (auto shape : m_shapes)
+	{
 		shape->Draw(canvas);
-	});
+	}
 }
 
 void CGroup::UpdateFrame()
@@ -136,13 +171,13 @@ void CGroup::UpdateFrame()
 	auto top = std::numeric_limits<double>::max();
 	auto bottom = std::numeric_limits<double>::min();
 	auto right = std::numeric_limits<double>::min();
-	std::for_each(m_shapes.begin(), m_shapes.end(), [&](auto & shape) {
+	for (auto & shape : m_shapes)
+	{
 		RectD rect = shape->GetFrame();
 		left = std::min(left, rect.left);
 		top = std::min(top, rect.top);
 		bottom = std::max(bottom, rect.top + rect.height);
 		right = std::max(bottom, rect.left + rect.width);
-	});
-
-	m_frame = RectD(left, top, right - left, bottom - top);
+		shape->SetFrame(RectD(left, top, right - left, bottom - top));
+	}
 }

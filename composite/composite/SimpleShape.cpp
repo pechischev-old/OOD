@@ -10,7 +10,7 @@ CShape::CShape(RectD const & frame, IStylePtr const & fillStyle, IStylePtr const
 {
 }
 
-RectD CShape::GetFrame()
+RectD CShape::GetFrame() const
 {
 	return m_frame;
 }
@@ -19,7 +19,6 @@ void CShape::SetFrame(const RectD & rect)
 {
 	m_frame = rect;
 }
-
 
 IStylePtr CShape::GetOutlineStyle() const
 {
@@ -52,7 +51,7 @@ std::shared_ptr<const IGroupShape> CShape::GetGroup() const
 	return nullptr;
 }
 
-void CShape::Draw(ICanvas & canvas)
+void CShape::Draw(ICanvas & canvas) const
 {
 	if (m_outlineStyle->IsEnabled())
 	{

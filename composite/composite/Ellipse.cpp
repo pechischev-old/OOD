@@ -14,7 +14,7 @@ CEllipse::CEllipse(RectD const & frame)
 {
 }
 
-void CEllipse::DrawImpl(ICanvas & canvas)
+void CEllipse::DrawImpl(ICanvas & canvas) const
 {
 	auto frame = GetFrame();
 	canvas.DrawEllipse(frame.left, frame.top, frame.width, frame.width);

@@ -20,7 +20,7 @@ public:
 	void AddShape(const IShapePtr & shape);
 	void RemoveShape(size_t index);
 
-	void Draw(ICanvas & canvas);
+	void Draw(ICanvas & canvas) const override;
 private:
 	double m_width;
 	double m_height;
